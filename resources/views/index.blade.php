@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charaset="utf-8">
-    <title>My BBS</title>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <div class="container">
-        <h1>My BBS</h1>
-        <ul>
-          <li>Title</li>
-          <li>Title</li>
-          <li>Title</li>
-        </ul>
-    </div>
-  </body>
-</html>
+<x-layout>
+    <x-slot name="title">
+        MyBBS
+    </x-slot>
+    
+    <h1>My BBS</h1>
+    <ul>
+        @forelse($posts as $index => $post)
+        <li>
+            <a href="{{ route('posts.show', $index )}}">
+            {{ $post }}
+            </a>
+        </li>
+        @empty
+        <li> No posts yet!</li>
+        @endforelse
+    </ul>
+</x-layout>
+
